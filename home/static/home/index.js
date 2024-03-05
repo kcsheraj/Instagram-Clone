@@ -1,4 +1,4 @@
-//UPDATE IMAGE WITH IMAGE LINK
+//UPDATE IMAGE WITH IMAGE LINK//UPLOAD.HTML
 document.addEventListener("DOMContentLoaded", function () {
   // Get reference to the image link input field and preview image
   const imageLinkInput = document.getElementById("image-link");
@@ -161,4 +161,32 @@ function createPostElement() {
   </article>
     `;
   return postElement;
+}
+
+//POST COMMENTS
+function submitComment() {
+  // Get the comment input value
+  var commentInput = document.getElementById("commentInput").value;
+
+  // Create a new comment element
+  var newComment = document.createElement("li");
+  newComment.className = "post__comment-item";
+  newComment.innerHTML = `
+    <div class="post__comment-avatar">
+      <img src="{% static 'home/assets/default-user.png' %}" alt="User Picture" />
+    </div>
+    <div class="post__comment-content">
+      <p class="post__comment-text">${commentInput}</p>
+      <span class="post__comment-user">
+        <a href="#">CurrentUser</a>
+      </span>
+    </div>
+  `;
+
+  // Append the new comment to the comments list
+  var commentsList = document.getElementById("commentsList");
+  commentsList.appendChild(newComment);
+
+  // Clear the comment input field after submission
+  document.getElementById("commentInput").value = "";
 }

@@ -20,11 +20,11 @@
           <div class="post__header">
             <!-- Makes the profile picture clickable -->
             <div class="post__profile">
-              <a href="https://github.com/leocosta1" target="_blank" class="post__avatar">
+              <a href="https://github.com/kcsheraj" target="_blank" class="post__avatar">
                 <img src="{% static 'home/assets/default-user.png' %}" alt="User Picture" />
               </a>
               <!-- Makes the username clickable -->
-              <a href="https://github.com/leocosta1" target="_blank" class="post__user">leocosta1</a>
+              <a href="https://github.com/kcsheraj" target="_blank" class="post__user">nightwingkc</a>
             </div>
           </div>
 
@@ -112,7 +112,7 @@
             <h3 class="post__comments-heading">Comments</h3>
 
             <!-- List of Comments -->
-            <ul class="post__comments-list">
+            <ul class="post__comments-list" id="commentsList">
               <!-- Comment Item -->
               <li class="post__comment-item">
                 <div class="post__comment-avatar">
@@ -131,10 +131,12 @@
 
             <!-- Comment Input Field -->
             <div class="post__comment-input">
-              <input type="text" class="post__comment-textfield" placeholder="Add a comment..." />
-              <button class="post__comment-submit">Post</button>
+              <input type="text" id="commentInput" class="post__comment-textfield" placeholder="Add a comment..." />
+              <button class="post__comment-submit" onclick="submitComment()">Post</button>
             </div>
           </div>
+
+          
         </article>
       </div>
     </div>
