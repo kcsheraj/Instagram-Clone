@@ -154,8 +154,8 @@ function createPostElement() {
 
       <!-- Comment Input Field -->
       <div class="post__comment-input">
-        <input type="text" class="post__comment-textfield" placeholder="Add a comment..." />
-        <button class="post__comment-submit">Post</button>
+        <input type="text" id="commentInput" class="post__comment-textfield" placeholder="Add a comment..." />
+        <button class="post__comment-submit" onclick="submitComment(this)">Post</button>
       </div>
     </div>
   </article>
@@ -164,9 +164,12 @@ function createPostElement() {
 }
 
 //POST COMMENTS
-function submitComment() {
+//uses "this keyword" to pass the button element to the function
+function submitComment(button) {
   // Get the comment input value
-  var commentInput = document.getElementById("commentInput").value;
+  var commentInput = button.parentNode.querySelector(
+    ".post__comment-textfield"
+  ).value;
 
   // Create a new comment element
   var newComment = document.createElement("li");
@@ -183,10 +186,13 @@ function submitComment() {
     </div>
   `;
 
-  // Append the new comment to the comments list
-  var commentsList = document.getElementById("commentsList");
+  console.log(newComment);
+
+  // Append the new comment to the comments list of the corresponding post
+  var commentsList = button.parentNode.previousElementSibling;
+
   commentsList.appendChild(newComment);
 
   // Clear the comment input field after submission
-  document.getElementById("commentInput").value = "";
+  button.parentNode.querySelector(".post__comment-textfield").value = "";
 }
