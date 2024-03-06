@@ -61,7 +61,11 @@ function createPostElement() {
     <div class="post__footer">
       <div class="post__buttons">
         <!-- Like Button -->
-        <button class="post__button">
+        <button
+                id="likeButton"
+                class="post__button"
+                onclick="toggleLike(this)"
+              >
           <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 
             <!-- Sets the color of the heart -->
@@ -111,7 +115,7 @@ function createPostElement() {
             <img src="{% static 'home/assets/default-user.png' %}" alt="User Picture" />
           </a>
 
-          <span>Liked by
+          <span class="likeCount">Liked by
             <a href="#">73 others</a></span>
         </div>
 
@@ -195,4 +199,35 @@ function submitComment(button) {
 
   // Clear the comment input field after submission
   button.parentNode.querySelector(".post__comment-textfield").value = "";
+}
+
+// Likeing and unliking posts
+function toggleLike(button) {
+  const likeButton = button;
+  const likeCountElement = button.parentElement.parentElement.querySelector(
+    ".post__infos .likeCount"
+  );
+
+  // Extract the number from the like count text content using regular expression
+  let likeCountValue = parseInt(likeCountElement.textContent.match(/\d+/)[0]);
+
+  console.log(likeCountValue);
+
+  let isLiked = likeButton.classList.contains("liked");
+
+  if (isLiked) {
+    // Unlike the post
+    // Decrease the like count value by 1
+    likeCountValue--;
+    // Update the like count text content
+    likeCountElement.textContent = `Liked by ${likeCountValue} others`;
+    likeButton.classList.remove("liked");
+  } else {
+    // Like the post
+    // Increase the like count value by 1
+    likeCountValue++;
+    // Update the like count text content
+    likeCountElement.textContent = `Liked by currentUser and ${likeCountValue} others`;
+    likeButton.classList.add("liked");
+  }
 }
