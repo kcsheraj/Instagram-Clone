@@ -44,8 +44,8 @@ def upload_view(request):
             "imageLink": image_link
         }
         
-        # Append the new post to the post list
-        post.append(new_post)
+        # Insert the new post at the beginning of the post list
+        post.insert(0, new_post)
         
         # Redirect to the index page
         return redirect('index')
