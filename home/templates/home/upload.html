@@ -13,7 +13,7 @@
     <a href="{% url 'index'%}"><button type="submit">Back to Home</button></a>
 
     <div class="upload-posts-form">
-      <form action="{}" method="post">
+      <form action="{% url 'upload' %}" method="post">
         {% csrf_token %}
         <!-- Description Input -->
         <label for="description">Description:</label>

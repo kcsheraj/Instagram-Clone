@@ -18,7 +18,6 @@ window.onscroll = () => {
     createNewPosts();
   }
 };
-
 function createNewPosts() {
   // Define the number of new posts you want to create
   const numNewPosts = 5; // Change this number as needed
@@ -29,7 +28,6 @@ function createNewPosts() {
     document.querySelector(".content").appendChild(newPost);
   }
 }
-
 const randomNumber = Math.random(); // Generate a random number
 function createPostElement() {
   // Create elements for the new post

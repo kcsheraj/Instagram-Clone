@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 post = [
 {
@@ -30,5 +30,25 @@ def index(request):
     return render(request, "home/index.html",{"posts": post})#passing the post list to the index.html
 
 def upload_view(request):
-    # Add your view logic here
+    if request.method == 'POST':
+        # Retrieve form data
+        description = request.POST.get('description')
+        image_link = request.POST.get('image_link')
+        
+        # Create a new post dictionary
+        new_post = {
+            "username": "CurrentUser",  # You can replace this with the actual username
+            "description": description,
+            "likes": 0,  # Initial likes count
+            "comments": {},  # No comments initially
+            "imageLink": image_link
+        }
+        
+        # Append the new post to the post list
+        post.append(new_post)
+        
+        # Redirect to the index page
+        return redirect('index')
+    
+    # If the request method is GET, render the upload page
     return render(request, 'home/upload.html')
