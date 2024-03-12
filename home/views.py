@@ -9,7 +9,8 @@ post = [
         "commentUsername": "someoneElse",
         "CommentDescription": "lol, this is funny"
     },
-    "imageLink": "https://source.unsplash.com/random/512x512/?apples"
+    "imageLink": "https://source.unsplash.com/random/512x512/?apples",
+    "post_id": 1
 },
 {
     "username": "liljohnny",
@@ -19,7 +20,8 @@ post = [
         "commentUsername": "grandma22",
         "CommentDescription": "yo thats crazyyy!"
     },
-    "imageLink": "https://source.unsplash.com/random/512x512/?oranges"
+    "imageLink": "https://source.unsplash.com/random/512x512/?oranges",
+    "post_id": 2
 }
 
 ]
@@ -34,7 +36,11 @@ def upload_view(request):
         # Retrieve form data
         description = request.POST.get('description')
         image_link = request.POST.get('image_link')
-        
+
+        # If image link is empty, use default preview image link
+        if not image_link:
+            image_link = "https://source.unsplash.com/random/512x512/?social"
+
         # Create a new post dictionary
         new_post = {
             "username": "CurrentUser",  # You can replace this with the actual username
