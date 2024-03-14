@@ -21,12 +21,14 @@
                   />
                 </a>
                 <!-- Makes the username clickable -->
+                {% for user in users %}
                 <a
-                  href="https://github.com/kcsheraj"
+                  href="https://github.com/{{ user.username }}"
                   target="_blank"
                   class="post__user"
-                  >{{ post.username }}</a
+                  >{{ user.username }}</a
                 >
+                {% endfor %}
               </div>
             </div>
 

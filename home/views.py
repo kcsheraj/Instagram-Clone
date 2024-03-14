@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import User
 
 post = [
 {
@@ -29,8 +30,9 @@ post = [
 
 # Create your views here.
 def index(request):
-    return render(request, "home/index.html",{"posts": post})#passing the post list to the index.html
-
+    users = User.objects.all()
+    return render(request, "home/index.html",{"posts": post, "users": users})#passing the post list to the index.html
+ 
 def upload_view(request):
     if request.method == 'POST':
         # Retrieve form data
