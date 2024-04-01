@@ -20,15 +20,12 @@
                     alt="User Picture"
                   />
                 </a>
-                <!-- Makes the username clickable -->
-                {% for user in users %}
                 <a
-                  href="https://github.com/{{ user.username }}"
+                  href="https://github.com/{{ post.user.username }}"
                   target="_blank"
-                  class="post__user"
-                  >{{ user.username }}</a
-                >
-                {% endfor %}
+                  class="post__user">
+                  {{ post.user.username }}
+                </a>
               </div>
             </div>
 
@@ -37,7 +34,7 @@
                 <!-- Sets the image to the post's URL -->
                 <img
                   class="post__media"
-                  src="{{ post.imageLink }}"
+                  src="{{ post.image_link }}"
                   alt="Post Content"
                 />
               </div>
@@ -154,7 +151,7 @@
                       class="post__name--underline"
                       href="https://github.com/{{ post.username }}"
                       target="_blank"
-                      >{{ post.username }}</a
+                      >{{ post.user.username }}</a
                     >
                     {{ post.description }}
                   </span>
